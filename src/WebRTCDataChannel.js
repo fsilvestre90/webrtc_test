@@ -1,5 +1,5 @@
 import React from "react";
-// import "webrtc-adapter";
+import "webrtc-adapter";
 import faker from "faker";
 import SignalingConnection from "./SignalingConnection";
 import PeerConnection from "./PeerConnection";
@@ -35,8 +35,8 @@ class WebRTCDataChannel extends React.Component {
 
     componentDidMount() {
         this.signalingConnection = new SignalingConnection({
-            // socketURL: "localhost:6503",
-            socketURL: "webrtc-sample-signaling.now.sh",
+            socketURL: "localhost:6503",
+            // socketURL: "webrtc-sample-signaling.now.sh",
             onOpen: () =>
                 this.setState({
                     startDisabled: false,

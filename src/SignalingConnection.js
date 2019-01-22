@@ -15,7 +15,6 @@ class SignalingConnection {
 
     sendToServer = msg => {
         const msgJSON = JSON.stringify(msg);
-
         this.connection.send(msgJSON);
     };
 

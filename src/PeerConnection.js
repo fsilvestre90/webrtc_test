@@ -19,16 +19,14 @@ class PeerConnection {
         this.peerConnection = new RTCPeerConnection({
             iceServers: [
                 {
-                    urls: `turn:${window.location.hostname}`,
-                    username: "webrtc",
-                    credential: "turnserver"
+                    urls: [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}],
                 }
             ]
         });
         this.peerConnection.onicecandidate = this.handleICECandidateEvent;
         this.peerConnection.oniceconnectionstatechange = this.handleICEConnectionStateChangeEvent;
         this.peerConnection.onsignalingstatechange = this.handleSignalingStateChangeEvent;
-        // this.peerConnection.onnegotiationneeded = this.handleNegotiationNeededEvent;
+        this.peerConnection.onnegotiationneeded = this.handleNegotiationNeededEvent;
         this.peerConnection.onaddtrack = gotRemoteTrack;
         this.peerConnection.onaddstream = gotRemoteStream;
 
